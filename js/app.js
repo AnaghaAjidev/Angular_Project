@@ -16,6 +16,8 @@ var app = angular.module('campus360',[]);
         $scope.addstudents=function(){
 
             $scope.totalstudents++;
+            $scope.showstudents=true;
+            $scope.showDashboard=true;
         };
 
     });

@@ -21,15 +21,23 @@
         <p><b>Total Faculty:</b>{{totalfaculty}}</p>
 <input type="text" ng-model="totalfaculty">
 
+
 <h2>Student List</h2>
 
-<ul>
+<button ng-click="showstudents= !showstudents">
+    Show/Hide Students
+</button>
+
+<div ng-if="showDashboard = !showDashboard">
+<ul ng-hide="showstudents">
     <li ng-repeat="student in students">
 
         {{student}}
 
     </li>
 </ul>
+</div>
+
 
         <!-- <p><b>Name:</b> Anagha</p>
         <p><b>Email:</b> anagha@gmail.com</p>
