@@ -1,0 +1,19 @@
+.red{
+    color: red;
+    font-weight: bold;
+}
+
+.green{
+    color: green;
+    font-weight: bold;
+}
+
+.grey{
+    color:grey;
+    font-weight: bold;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color:azure;
+}

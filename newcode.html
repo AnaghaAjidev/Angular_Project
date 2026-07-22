@@ -1,0 +1,47 @@
+<hr>
+
+<h2>Department Info</h2>
+
+<div ng-switch="selectedDept">
+
+    <div ng-switch-when="CSE">
+        <h3>Computer Science and Engineering</h3>
+        <p>Department of Computer Science and Engineering</p>
+    </div>
+
+    <div ng-switch-when="MCA">
+        <h3>Master of Computer Applications</h3>
+        <p>Department of Master of Computer Applications</p>
+    </div>
+
+    <div ng-switch-when="MBA">
+        <h3>Master of Business Administration</h3>
+        <p>Department of Master of Business Administration</p>
+    </div>
+
+    <div ng-switch-when="MCOM">
+        <h3>Master of Commerce</h3>
+        <p>Department of Master of Commerce</p>
+    </div>
+
+    <div ng-switch-when="ECE">
+        <h3>Electronics and Communication Engineering</h3>
+        <p>Department of Electronics and Communication Engineering</p>
+    </div>
+
+    <div ng-switch-when="IMCA">
+        <h3>Integrated Master of Computer Applications</h3>
+        <p>Department of Integrated Master of Computer Applications</p>
+    </div>
+
+    <div ng-switch-when="BCA">
+        <h3>Bachelor of Computer Applications</h3>
+        <p>Department of Bachelor of Computer Applications</p>
+    </div>
+
+    <div ng-switch-default>
+        <h3>Select a Department</h3>
+        <p>Please choose a department from the list.</p>
+    </div>
+
+</div>

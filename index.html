@@ -1,45 +1,122 @@
 <!DOCTYPE html>
 <html ng-app="campus360">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <title>Campus Dashboard</title>
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body ng-controller="dashboardcontroller">
     <div class="box">
         <h1>{{collegename}}</h1>
-<input type="text" ng-model="collegename">
+        <input type="text" ng-model="collegename">
 
-        <p><b>Total Students:</b>{{totalstudents}}</p>
-<input type="text" ng-model="totalstudents">
-<button ng-click="totalstudents=totalstudents+1">Add Students</button>
+        <p ng-class="{
+    'green': totalstudents > 1000,
+    'red': totalstudents < 1000,
+    'grey': totalstudents == 1000
+}">
+            <b>Total Students:</b> {{totalstudents}}
+        </p>
+        <input type="number" ng-model="totalstudents">
+        <button ng-click="totalstudents = totalstudents + 1">
+            Add Students
+        </button>
 
-        <p><b>Total Faculty:</b>{{totalfaculty}}</p>
-<input type="text" ng-model="totalfaculty">
-
-
-<h2>Student List</h2>
-
-<button ng-click="showstudents= !showstudents">
-    Show/Hide Students
-</button>
-
-<div ng-if="showDashboard = !showDashboard">
-<ul ng-hide="showstudents">
-    <li ng-repeat="student in students">
-
-        {{student}}
-
-    </li>
-</ul>
-</div>
+        <p ng-style="{
+            'color': totalfaculty >=100 ? 'green' : 'red',
+            'font-size': '20px',
+            'font-weight':'bold'
+        }"><b>Total Faculty:</b>{{totalfaculty}}</p>
+        <input type="text" ng-model="totalfaculty">
 
 
-        <!-- <p><b>Name:</b> Anagha</p>
+        <h2>Student List</h2>
+
+        <button ng-click="showstudents = !showstudents">
+            Show/Hide Students
+        </button>
+
+        <ul ng-show="showstudents">
+            <li ng-repeat="student in students">
+                {{student}}
+            </li>
+        </ul>
+    </div>
+
+
+    <hr>
+    <h2>Filter Demo</h2>
+    <p>Uppercase:{{collegename | uppercase}}</p>
+    <p>Lowercase:{{collegename | lowercase}}</p>
+    <p>Currency:{{fees | currency}}</p>
+    <p>Date: {{today | date: 'dd/MM/yyyy'}}</p>
+    <p>Number: {{fees | number:2}}</p>
+    <hr>
+
+    <h2>Selected Departments</h2>
+    <label>Select Department</label>
+
+    <select ng-model="selectedDept" ng-options="department for department in departments">
+    </select>
+
+    <p>Selected Department:{{selectedDept}}</p>
+
+    <hr>
+
+
+    <h2>Department Info</h2>
+
+    <div ng-switch="selectedDept">
+
+        <div ng-switch-when="CSE">
+            <h3>Computer Science and Engineering</h3>
+            <p>Department of Computer Science and Engineering</p>
+        </div>
+
+        <div ng-switch-when="MCA">
+            <h3>Master of Computer Applications</h3>
+            <p>Department of Master of Computer Applications</p>
+        </div>
+
+        <div ng-switch-when="MBA">
+            <h3>Master of Business Administration</h3>
+            <p>Department of Master of Business Administration</p>
+        </div>
+
+        <div ng-switch-when="MCOM">
+            <h3>Master of Commerce</h3>
+            <p>Department of Master of Commerce</p>
+        </div>
+
+        <div ng-switch-when="ECE">
+            <h3>Electronics and Communication Engineering</h3>
+            <p>Department of Electronics and Communication Engineering</p>
+        </div>
+
+        <div ng-switch-when="IMCA">
+            <h3>Integrated Master of Computer Applications</h3>
+            <p>Department of Integrated Master of Computer Applications</p>
+        </div>
+
+        <div ng-switch-when="BCA">
+            <h3>Bachelor of Computer Applications</h3>
+            <p>Department of Bachelor of Computer Applications</p>
+        </div>
+
+        <div ng-switch-default>
+            <h3>Select a Department</h3>
+            <p>Please choose a department from the list.</p>
+        </div>
+
+    </div>
+
+
+    <!-- <p><b>Name:</b> Anagha</p>
         <p><b>Email:</b> anagha@gmail.com</p>
         <p><b>Register No:</b> FIT25MCA-2010</p>
         <p><b>Phone No:</b> 1234567892</p> -->
@@ -47,4 +124,5 @@
     </div>
 
 </body>
+
 </html>
