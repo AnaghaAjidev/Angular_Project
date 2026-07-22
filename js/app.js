@@ -26,6 +26,21 @@ app.controller("dashboardcontroller", function ($scope) {
 
         $scope.selectedDept = "MCA";
 
+
+        $scope.isDisabled = true;
+        $scope.allowAdmission = function(){
+
+            $scope.isDisabled = false;
+        };
+
+
+        $scope.isReadOnly = true;
+        $scope.toogleReadOnly = function (){
+            
+            $scope.isReadOnly = !$scope.isReadOnly;
+        };
+
+
     $scope.addstudents = function () {
         $scope.totalstudents++;
     };
