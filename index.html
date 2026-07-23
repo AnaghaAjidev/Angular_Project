@@ -137,21 +137,136 @@
     <h2>ng-readonly Demo</h2>
     <label>College Id</label>
     <br><br>
-    <input type="text" ng-model="" ng-readonly="isReadOnly" >
+    <input type="text" ng-model="collegeId" ng-readonly="isReadOnly">
     <br><br>
-    <button ng-click="isReadOnly" = !isReadOnly>
-        toogle readonly
+    <button ng-click="toggleReadOnly()">
+        toggle readonly
     </button>
     <p>ReadOnly Status:{{isReadOnly}}</p>
 
-    
-    <!-- <p><b>Name:</b> Anagha</p>
-        <p><b>Email:</b> anagha@gmail.com</p>
-        <p><b>Register No:</b> FIT25MCA-2010</p>
-        <p><b>Phone No:</b> 1234567892</p> -->
 
-    </div>
+    <hr>
+    <h2>Student Registration</h2>
+    <form name="studentForm" novalidate>
 
+        <label>Student Name</label>
+
+        <input type="text" name="studentName" ng-model="stud_name" ng-minlength="3" ng-maxlength="20" required>
+
+        <p ng-show="studentForm.studentName.$touched && studentForm.studentName.$error.required" style="color:red">
+            Student Name is Required
+        </p>
+
+        <p ng-show="studentForm.studentName.$touched && studentForm.studentName.$error.minlength" style="color:red">
+            Minimum 3 characters allowed
+        </p>
+        <p ng-show="studentForm.studentName.$touched && studentForm.studentName.$error.maxlength" style="color:red">
+            Maximum 20 characters allowed
+        </p>
+        <br><br>
+
+        <label>Email</label>
+
+        <input type="text" name="studentEmail" ng-model="stud_email"
+            ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/" required>
+        <br><br>
+
+        <label>Phone</label>
+
+        <input type="text" name="studentPhone" ng-model="stud_phn" ng-pattern="/^[0-9]{10}$/">
+
+
+        <p ng-show="studentForm.studentPhone.$touched &&
+            studentForm.studentPhone.$error.pattern" style="color:red">
+            Phone Number must contain exactly 10 digits
+        </p>
+        <br><br>
+        
+        <label>Age</label>
+
+        <input type="number" name="studentAge" ng-model="stud_age" min="18" max="100">
+
+        <p ng-show="studentForm.studentAge.$touched &&
+            studentForm.studentAge.$error.min" style="color:red">
+            Not Eligible (Age must be at least 18)
+        </p>
+
+        <p ng-show="studentForm.studentAge.$touched &&
+            studentForm.studentAge.$error.max" style="color:red">
+            Invalid Age
+        </p>
+        <br><br>
+
+        <label>Department</label>
+        <select ng-model="stud_dept" ng-options="dept for dept in departments" required>
+            <option value="">Select Department</option>
+        </select>
+        <br><br>
+
+        <label>Gender</label><br>
+
+        <input type="radio" ng-model="stud_gender" value="Male"> Male
+        <input type="radio" ng-model="stud_gender" value="Female"> Female
+        <input type="radio" ng-model="stud_gender" value="Other"> Other
+        <br><br>
+
+        <label>Address</label>
+
+        <input type="text" name="studentAddress" ng-model="stud_adr" ng-minlength="10" ng-maxlength="100"
+            ng-pattern="/^[a-zA-Z0-9\s,.\-/#]+$/">
+
+        <p ng-show="studentForm.studentAddress.$touched &&
+            studentForm.studentAddress.$error.minlength" style="color:red">
+            Minimum 10 characters required
+        </p>
+
+        <p ng-show="studentForm.studentAddress.$touched &&
+            studentForm.studentAddress.$error.maxlength" style="color:red">
+            Maximum 100 characters allowed
+        </p>
+
+        <p ng-show="studentForm.studentAddress.$touched &&
+            studentForm.studentAddress.$error.pattern" style="color:red">
+            Invalid Address
+        </p>
+        <br><br>
+
+        <button type="button">Register</button>
+    </form>
+
+
+    <hr>
+    <h2>Form Status</h2>
+    <p>Valid: {{studentForm.$valid}}</p>
+
+    <p>Invalid: {{studentForm.$invalid}}</p>
+
+    <p>Pristine: {{studentForm.$pristine}}</p>
+
+    <p>Dirty: {{studentForm.$dirty}}</p>
+    <hr>
+
+    <h3>Student Name Status</h3>
+    <p>Student Name touched: {{studentForm.studentName.$touched}}</p>
+    <p>Student Name valid: {{studentForm.studentName.$valid}}</p>
+    <p>Student Name invalid: {{studentForm.studentName.$invalid}}</p>
+    <p>Student Name Minlength: {{studentForm.studentName.$error.minlength}}</p>
+    <p>Student Name Maxlength: {{studentForm.studentName.$error.maxlength}}</p>
+    <p>
+        Student Name error required:
+        {{studentForm.studentName.$error.required || false}}
+    </p>
+    <hr>
+
+    <h3>Email Status</h3>
+    <p>Email touched: {{studentForm.studentEmail.$touched}}</p>
+    <p>Email valid: {{studentForm.studentEmail.$valid}}</p>
+    <p>Email invalid: {{studentForm.studentEmail.$invalid}}</p>
+    <p>Email error required: {{studentForm.studentEmail.$error.required || false}}</p>
+    <p>Email error pattern: {{studentForm.studentEmail.$error.pattern || false}}</p>
+    <hr>
+
+</div>
 </body>
 
 </html>

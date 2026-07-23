@@ -41,6 +41,8 @@ app.controller("dashboardcontroller", function ($scope) {
         };
 
 
+        $scope.student={};
+
     $scope.addstudents = function () {
         $scope.totalstudents++;
     };
