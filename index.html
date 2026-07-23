@@ -147,7 +147,7 @@
 
     <hr>
     <h2>Student Registration</h2>
-    <form name="studentForm" novalidate>
+    <form name="studentForm" novalidate ng-submit="registerstudent()">
 
         <label>Student Name</label>
 
@@ -181,7 +181,7 @@
             Phone Number must contain exactly 10 digits
         </p>
         <br><br>
-        
+
         <label>Age</label>
 
         <input type="number" name="studentAge" ng-model="stud_age" min="18" max="100">
@@ -230,8 +230,11 @@
             Invalid Address
         </p>
         <br><br>
+        
+        <button type="button" ng-click="registerstudent()">
+            Register
+        </button>
 
-        <button type="button">Register</button>
     </form>
 
 
@@ -266,7 +269,7 @@
     <p>Email error pattern: {{studentForm.studentEmail.$error.pattern || false}}</p>
     <hr>
 
-</div>
+    </div>
 </body>
 
 </html>

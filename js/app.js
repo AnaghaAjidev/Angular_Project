@@ -6,6 +6,7 @@ app.controller("dashboardcontroller", function ($scope) {
     $scope.collegename = "FISAT";
     $scope.totalstudents = 1200;
     $scope.totalfaculty = 1500;
+    $scope.collegeId = "FISAT001";
 
     console.log("dashboard controller is loaded");
 
@@ -35,13 +36,18 @@ app.controller("dashboardcontroller", function ($scope) {
 
 
         $scope.isReadOnly = true;
-        $scope.toogleReadOnly = function (){
+        $scope.toggleReadOnly = function (){
             
             $scope.isReadOnly = !$scope.isReadOnly;
         };
 
 
         $scope.student={};
+
+        $scope.registerstudent = function(){
+
+            alert("Student Registered Successfully")
+        };
 
     $scope.addstudents = function () {
         $scope.totalstudents++;
